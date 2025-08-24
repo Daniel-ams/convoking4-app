@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convoking4™ - Strategic Decision-Making</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Convoking4™ Strategic Decision-Making</h1>
+        <p>The Organizational Snapshot Assessment</p>
+        <div>
+            <button id="load-btn">Load Profile (.json)</button>
+            <input type="file" id="file-loader" hidden>
+            <button id="clear-btn">Clear Form</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="onboarding">
+            <label for="org-name">Organization Name:</label>
+            <input type="text" id="org-name" placeholder="Enter your organization's name">
+        </section>
+
+        <section class="phase-panel">
+            <h2 class="phase-title">Phase I: Foundation (Understand & Align) 🧭</h2>
+            <div class="panel-content">
+                </div>
+        </section>
+
+        <section class="phase-panel">
+            <h2 class="phase-title">Phase II: Decision Hub (Decide) ✅</h2>
+            <div class="panel-content" style="display:none;">
+                </div>
+        </section>
+
+        <section class="phase-panel">
+            <h2 class="phase-title">Phase III: Roadmap & Execution (Thrive) 🚀</h2>
+            <div class="panel-content" style="display:none;">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <button id="save-btn">Save Snapshot to File (.json)</button>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
