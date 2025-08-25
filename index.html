@@ -3,50 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convoking4™ - Strategic Decision-Making</title>
+    <title>Convoking4™ - Strategic Alignment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <h1>Convoking4™ Strategic Decision-Making</h1>
-        <p>The Organizational Snapshot Assessment</p>
-        <div>
-            <button id="load-btn">Load Profile (.json)</button>
-            <input type="file" id="file-loader" hidden>
-            <button id="clear-btn">Clear Form</button>
+    <header class="main-header">
+        <div class="top-bar">
+            <span id="version-display"></span>
+            <span id="date-display"></span>
         </div>
+        <nav class="main-nav">
+            <button id="load-profile-btn" class="btn">Load Profile (.json)</button>
+            <input type="file" id="file-loader" accept=".json" hidden>
+            <button id="save-profile-btn" class="btn">Save Profile (.json)</button>
+            <button id="new-profile-btn" class="btn">New Profile</button>
+        </nav>
     </header>
 
-    <main>
-        <section id="onboarding">
-            <label for="org-name">Organization Name:</label>
-            <input type="text" id="org-name" placeholder="Enter your organization's name">
-        </section>
-
-        <section class="phase-panel">
-            <h2 class="phase-title">Phase I: Foundation (Understand & Align) 🧭</h2>
-            <div class="panel-content">
+    <main id="onboarding-screen" class="screen">
+        <div class="container onboarding-container">
+            <div class="onboarding-text">
+                <h1>Welcome to Convoking4™</h1>
+                <p class="subtitle">Let's turn complexity into clarity.</p>
+                <p>You're about to begin a four-phase journey to understand your organization, align on a shared vision, make informed decisions, and thrive.</p>
+                <button id="begin-phase-1-btn" class="btn btn-primary">Begin Phase I: Foundation</button>
+            </div>
+            <div class="onboarding-journey">
+                <div class="journey-step">
+                    <div class="journey-icon">🧭</div>
+                    <div class="journey-details">
+                        <strong>Phase I: Foundation</strong>
+                        <span>Understand & Align</span>
+                    </div>
                 </div>
-        </section>
-
-        <section class="phase-panel">
-            <h2 class="phase-title">Phase II: Decision Hub (Decide) ✅</h2>
-            <div class="panel-content" style="display:none;">
+                <div class="journey-connector"></div>
+                <div class="journey-step">
+                    <div class="journey-icon">✅</div>
+                    <div class="journey-details">
+                        <strong>Phase II: Decision Hub</strong>
+                        <span>Decide</span>
+                    </div>
                 </div>
-        </section>
-
-        <section class="phase-panel">
-            <h2 class="phase-title">Phase III: Roadmap & Execution (Thrive) 🚀</h2>
-            <div class="panel-content" style="display:none;">
+                <div class="journey-connector"></div>
+                <div class="journey-step">
+                    <div class="journey-icon">🚀</div>
+                    <div class="journey-details">
+                        <strong>Phase III: Roadmap</strong>
+                        <span>Thrive</span>
+                    </div>
                 </div>
-        </section>
+                 <div class="journey-connector"></div>
+                <div class="journey-step">
+                    <div class="journey-icon">🤝</div>
+                    <div class="journey-details">
+                        <strong>Phase IV: Alignment</strong>
+                        <span>Execute</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+    
+    <main id="phase-1-screen" class="screen" style="display: none;">
+        <div class="container">
+            <header class="phase-header">
+                <h3>Convoking4™</h3>
+                <h1>Phase I: Foundation 🧭</h1>
+                <p class="phase-goal">Establish your strategic baseline by defining where you are now and where you want to go.</p>
+                <div class="progress-container">
+                    <span>Progress: (0 of 3 steps completed)</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </header>
 
-    <footer>
-        <button id="save-btn">Save Snapshot to File (.json)</button>
-    </footer>
+            <div class="phase-steps">
+                
+                <div id="basics-step" class="step-card">
+    <h2>The Basics</h2>
+    <p>Welcome! Let's start with the big picture. This section is about your entire organization, venture, or association. Please answer these questions for the overall entity, not for a specific project, team, or division (we'll cover those in a later step).</p>
+    <form id="basics-form">
+        
+        <div class="form-group">
+            <label for="org-name">What is the official or primary name of your organization?</label>
+            <small>This should be the name of the parent entity. If you're an informal club or startup, use the name you're most known by.</small>
+            <input type="text" id="org-name" required>
+        </div>
 
+        <div class="form-group">
+            <label>How many people are in your entire organization?</label>
+            <small>Include all founders, employees, and active members across all teams and projects.</small>
+            <ul class="choice-group">
+                <li><label><input type="radio" name="org-size" value="Micro (<10)" required> Micro (&lt;10)</label></li>
+                <li><label><input type="radio" name="org-size" value="Small (10-50)"> Small (10–50)</label></li>
+                <li><label><input type="radio" name="org-size" value="Medium (51-200)"> Medium (51–200)</label></li>
+                <li><label><input type="radio" name="org-size" value="Large (>200)"> Large (&gt;200)</label></li>
+                <li><label><input type="radio" name="org-size" value="Uncertain"> Uncertain: You're not sure of the exact count.</label></li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label for="org-year">In what year did the organization begin its work?</label>
+            <small>This is the year your venture, club, or company was officially formed or started its primary activities.</small>
+            <input type="number" id="org-year" placeholder="YYYY" min="1800" max="2025">
+        </div>
+        
+        <div class="form-group">
+            <label for="org-location">Where is your organization's main base of operations?</label>
+            <small>This could be a headquarters, main office, or simply the primary location of the founders. You can select "Fully Remote" if you're a distributed entity.</small>
+            <input type="text" id="org-location" placeholder="e.g., City, State, Country">
+            <ul class="choice-group">
+                <li><label><input type="checkbox" id="org-remote" value="Fully Remote"> Fully Remote / Distributed</label></li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label>Which of these best describe your organization's core purpose? Select all that apply.</label>
+            <small>This question clarifies your fundamental reason for existing.</small>
+            <ul class="choice-group">
+                <li><label><input type="checkbox" name="org-identity" value="For-Profit Business"> For-Profit Business: Your main goal is to generate profit for owners.</label></li>
+                <li><label><input type="checkbox" name="org-identity" value="Mission-Driven"> Mission-Driven: Your primary purpose is to achieve a social, environmental, or cultural goal (e.g., non-profit, social enterprise).</label></li>
+                <li><label><input type="checkbox" name="org-identity" value="Member/Community-Based"> Member/Community-Based: You exist to serve and are often governed by a specific group of members.</label></li>
+                <li><label><input type="checkbox" name="org-identity" value="Investor/Financial Firm"> Investor/Financial Firm: You primarily manage investments or financial assets for others.</label></li>
+                <li><label><input type="checkbox" name="org-identity" value="International Financial Institution (IFI)"> International Financial Institution (IFI): An organization created by multiple countries to promote economic stability and development (e.g., World Bank, IMF).</label></li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label>What is your current legal setup?</label>
+            <small>Your legal structure affects how you operate, pay taxes, and are governed.</small>
+             <ul class="choice-group">
+                <li><label><input type="radio" name="org-legal" value="LLC"> LLC: A structure that provides liability protection while allowing for flexible taxation.</label></li>
+                <li><label><input type="radio" name="org-legal" value="Corporation"> Corporation: A formal legal entity separate from its owners (e.g., C-Corp, S-Corp, B-Corp, Non-Profit Corporation).</label></li>
+                <li><label><input type="radio" name="org-legal" value="Treaty / Intergovernmental Charter"> Treaty / Intergovernmental Charter: Established by a formal agreement signed by multiple sovereign nations.</label></li>
+                <li><label><input type="radio" name="org-legal" value="Sole Proprietorship"> Sole Proprietorship: A business owned and run by one person.</label></li>
+                <li><label><input type="radio" name="org-legal" value="Partnership"> Partnership: A business owned and operated by two or more people.</label></li>
+                <li><label><input type="radio" name="org-legal" value="Pre-Formal/Informal"> Pre-Formal/Informal: For groups, clubs, or ventures that have not yet registered as a formal legal entity.</label></li>
+                <li><label><input type="radio" name="org-legal" value="Uncertain"> Uncertain: You're not sure about your legal structure.</label></li>
+            </ul>
+        </div>
+        
+        <div class="form-group">
+            <label>How is your organization primarily funded? Select all that apply.</label>
+            <small>This helps us understand your financial foundation. The options are grouped by the type of funding.</small>
+            <fieldset>
+                <legend>Internal & Earned Revenue</legend>
+                <ul class="choice-group">
+                    <li><label><input type="checkbox" name="org-funding" value="Founder Funded (Bootstrapped)"> Founder Funded (Bootstrapped): Using personal savings from the founders to fund the organization.</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Earned Revenue"> Earned Revenue: Income generated from selling products or providing services.</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Membership Fees / Dues"> Membership Fees / Dues: Regular payments from members to be part of a club, association, or platform.</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Government Contracts"> Government Contracts: Payments from government agencies for delivering specific services or products.</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Investment Income"> Investment Income: Returns generated from the organization's own capital, such as an endowment.</label></li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>Investment Capital</legend>
+                <ul class="choice-group">
+                    <li><label><input type="checkbox" name="org-funding" value="Venture & Angel Capital"> Venture & Angel Capital: Funding from professional investors (like VCs or Angel Investors) in exchange for equity.</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Friends & Family Round"> Friends & Family Round: Initial capital raised from your personal network of friends and family.</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Equity Crowdfunding"> Equity Crowdfunding: Raising money online from a large number of people in exchange for shares in the company.</label></li>
+                </ul>
+            </fieldset>
+             <fieldset>
+                <legend>Philanthropic & Contributed Funding</legend>
+                <ul class="choice-group">
+                    <li><label><input type="checkbox" name="org-funding" value="Individual Donations"> Individual Donations: Gifts from private citizens to support your cause. 🎗️</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Foundation Grants"> Foundation Grants: Funding awarded by a private, family, or community foundation.</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Corporate Sponsorships"> Corporate Sponsorships: Support from a company, often in exchange for brand recognition.</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Donation Crowdfunding"> Donation Crowdfunding: Raising funds online from many individuals with no financial return expected (e.g., Kickstarter, GoFundMe).</label></li>
+                </ul>
+            </fieldset>
+             <fieldset>
+                <legend>Debt Financing</legend>
+                <ul class="choice-group">
+                    <li><label><input type="checkbox" name="org-funding" value="Loans & Debt Financing"> Loans & Debt Financing: Funds from a bank, credit union, or other lender that must be repaid, typically with interest.</label></li>
+                </ul>
+            </fieldset>
+             <fieldset>
+                <legend>Sovereign & Multilateral Funding</legend>
+                <ul class="choice-group">
+                    <li><label><input type="checkbox" name="org-funding" value="Member State Contributions"> Member State Contributions: Capital subscriptions or dues paid by member countries.</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Bond Issuance"> Bond Issuance: Raising capital by selling bonds on global financial markets.</label></li>
+                    <li><label><input type="checkbox" name="org-funding" value="Donor Replenishments"> Donor Replenishments: Direct grant contributions from governments to specific funds.</label></li>
+                </ul>
+            </fieldset>
+        </div>
+        
+        <button type="submit" class="btn">Save Basics</button>
+    </form>
+</div>
+                <div id="current-state-step" class="step-card locked">
+                    <h2>Organizational Snapshot - Current State 📝</h2>
+                    <p>Complete a comprehensive assessment of your organization as it exists today.</p>
+                    <span class="status status-locked">Locked</span>
+                    <button class="btn" disabled>Start Assessment</button>
+                </div>
+                <div id="future-state-step" class="step-card locked">
+                    <h2>Organizational Snapshot - Desired Future State 🚀</h2>
+                    <p>Define a shared vision for your organization from an aspirational, future-focused perspective.</p>
+                    <span class="status status-locked">Locked</span>
+                    <button class="btn" disabled>Define Future State</button>
+                </div>
+            </div>
+            <div class="phase-nav">
+                <button id="prev-btn" class="btn">Previous</button>
+                <button id="next-btn" class="btn btn-primary">Next</button>
+            </div>
+        </div>
+    </main>
+    
     <script src="app.js"></script>
 </body>
 </html>

@@ -1,31 +1,269 @@
-/* Basic Setup */
+/* --- Global Styles & Brand Identity --- */
+:root {
+    --color-black: #1A1A1A;
+    --color-red: #D92E2E;
+    --color-light-gray: #F4F7F9;
+    --color-white: #FFFFFF;
+    --color-border: #EAECEF;
+    --font-main: 'Inter', sans-serif;
+}
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #f4f7f9;
-    color: #333;
+    font-family: var(--font-main);
+    background-color: var(--color-light-gray);
+    color: var(--color-black);
     margin: 0;
-    padding: 20px;
+    padding-top: 100px; 
+}
+.container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+    margin: 0 auto;
+}
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-red);
+    margin: 0;
+    text-transform: uppercase;
+}
+p {
+    line-height: 1.6;
+    color: #4a4a4a;
+}
+.subtitle {
+    font-size: 1.25rem;
+    color: #666;
+    margin-top: -1rem;
 }
 
-/* Header & Main Controls */
-header { text-align: center; margin-bottom: 2rem; }
-button { padding: 10px 15px; border-radius: 5px; border: none; cursor: pointer; }
+/* --- Main Header Styles --- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 200;
+    padding: 0;
+}
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+#date-display::before {
+    content: "|";
+    margin: 0 0.5rem;
+    color: #ccc;
+}
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
 
-/* Phase Panels */
-.phase-panel {
-    background-color: #fff;
+/* --- Buttons --- */
+.btn {
+    padding: 12px 24px;
+    border: none;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.btn:hover {
+    transform: translateY(-2px);
+}
+.btn-primary {
+    background-color: var(--color-red);
+    color: var(--color-white);
+}
+
+/* --- Onboarding Screen --- */
+.onboarding-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    text-align: left;
+    align-items: center;
+    max-width: 1000px;
+}
+.onboarding-text .btn-primary {
+    margin-top: 1.5rem;
+}
+.onboarding-journey {
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.journey-step {
+    display: flex;
+    align-items: center;
+}
+.journey-icon {
+    font-size: 2rem;
+    margin-right: 1.5rem;
+}
+.journey-details {
+    display: flex;
+    flex-direction: column;
+}
+.journey-details strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.journey-details span {
+    color: #6c757d;
+}
+.journey-connector {
+    height: 30px;
+    width: 2px;
+    background-color: var(--color-border);
+    margin-left: 1.5rem;
+}
+
+/* --- Phase Screen Layout --- */
+.phase-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+.progress-container {
+    margin-top: 1.5rem;
+}
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: var(--color-border);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+.progress-fill {
+    height: 100%;
+    background-color: var(--color-red);
+}
+.phase-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.step-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.step-card h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+.status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
     margin-bottom: 1rem;
 }
-.phase-title {
-    padding: 1rem;
-    cursor: pointer;
-    background-color: #eef2f5;
-    margin: 0;
-    border-radius: 8px 8px 0 0;
+.status-todo { background-color: #FFF3CD; color: #856404; }
+.status-locked { background-color: #EAECEF; color: #6c757d; }
+.step-card.locked {
+    opacity: 0.6;
 }
-.panel-content {
-    padding: 1rem;
-    border-top: 1px solid #ddd;
+.btn[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+.phase-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+}
+
+/* --- Form Styles --- */
+.form-group {
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+.step-card .form-group:first-of-type {
+    padding-top: 0;
+    margin-top: 0;
+    border-top: none;
+}
+.form-group > label {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.form-group small {
+    display: block;
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+.choice-group {
+    list-style: none;
+    padding-left: 0;
+}
+.choice-group label {
+    font-weight: 400;
+}
+
+/* --- Modal Styles --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background-color: var(--color-white);
+    margin: auto;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 600px;
+}
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
 }
